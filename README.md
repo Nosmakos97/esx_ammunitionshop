@@ -1,4 +1,12 @@
 # esx_ammunitionshop
+
+## [REQUIREMENTS]
+
+ES_EXTENDED
+MYSQL
+pNotify = https://forum.cfx.re/t/release-pnotify-in-game-js-notifications-using-noty/20659
+
+
 ## Default Location ##
 
 [ 12.54, -1105.41, 29.8 ]
