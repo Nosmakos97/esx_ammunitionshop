@@ -2,9 +2,11 @@
 
 ## [REQUIREMENTS]
 
-ES_EXTENDED
-MYSQL
-pNotify = https://forum.cfx.re/t/release-pnotify-in-game-js-notifications-using-noty/20659
+- ES_EXTENDED
+
+- MYSQL
+
+- pNotify = https://forum.cfx.re/t/release-pnotify-in-game-js-notifications-using-noty/20659
 
 
 ## Default Location ##
