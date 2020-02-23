@@ -15,6 +15,8 @@
 If the Config.Locale = ‘en’ language will always be set as ‘en’ than the language you choosed, you can always
 manually edit the ‘en’ language file and use your language there.
 
+## Configuration ##
+
 #ItemsInAmmunitionShop Config option also allows you to sell any ammunition you pleased.
 You should add the weapon names as ammunition types:
 
