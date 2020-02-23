@@ -6,6 +6,5 @@ Locales['en'] = {
     ['not_enough_money'] = 'Not enough money',
     ['bought'] = 'Bought',
     ['for'] = 'for',
-    ['ammunition'] = 'ammunition',
-    ['not_specific_weapon'] = 'You do not have the specific weapon to buy ammunition!'
-}
+} 
+  

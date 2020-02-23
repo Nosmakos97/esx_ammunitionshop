@@ -3,31 +3,33 @@ local ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterServerEvent("esx_ammunitionshop:BuyItem")
-AddEventHandler("esx_ammunitionshop:BuyItem", function(amountToBuy,totalBuyPrice,itemName)
+AddEventHandler("esx_ammunitionshop:BuyItem", function(amountToBuy,totalBuyPrice,weaponName)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local itemLabel = ESX.GetItemLabel(itemName)
 
-	if amountToBuy < 1500 then
-		if xPlayer.getInventoryItem(itemName).count + amountToBuy  <= 1500 then
+	if amountToBuy <= 100 then
+		if xPlayer.getWeapon(weaponName) then
 			if xPlayer.getMoney() >= totalBuyPrice then
-	
+				local weaponLabel = ESX.GetWeaponLabel(weaponName)
+				
 				xPlayer.removeMoney(totalBuyPrice)
-				xPlayer.addInventoryItem(itemName, amountToBuy)
-		
+
+				xPlayer.addWeapon(weaponName, amountToBuy)
+
 				TriggerClientEvent("pNotify:SendNotification", -1, {
-					text = _U('bought') .. " "..amountToBuy.."x "..itemLabel.." " .. _U('for') .. " "..totalBuyPrice.." €",type = "success",queue = "ammunition",timeout = 2500,
+					text = _U('bought') .. " "..amountToBuy.."x ".. weaponLabel .. " " .. _U('ammunition').." " .. _U('for') .. " "..totalBuyPrice.." €",type = "success",queue = "ammunition",timeout = 2500,
 					layout = "centerLeft"
 				})
+
 			else
 				TriggerClientEvent("pNotify:SendNotification", -1, {text = _U('not_enough_money'),type = "error",queue = "ammunition",timeout = 2500,
 					layout = "centerLeft"
 				})
 			end
 		else
-		TriggerClientEvent("pNotify:SendNotification", -1, {text = _U('purchase_limit_warning'),type = "error",queue = "ammunition",timeout = 2500,
+			TriggerClientEvent("pNotify:SendNotification", -1, {text = _U('not_specific_weapon'),type = "error",queue = "ammunition",timeout = 2500,
 			layout = "centerLeft"
 		})
-		end
+	end
 	else
 		TriggerClientEvent("pNotify:SendNotification", -1, {text = _U('purchase_limit_warning'),type = "error",queue = "ammunition",timeout = 2500,
 			layout = "centerLeft"
