@@ -15,14 +15,27 @@ AddEventHandler("esx_ammunitionshop:BuyItem", function(amountToBuy,totalBuyPrice
 
 				xPlayer.addWeapon(weaponName, amountToBuy)
 
-				TriggerClientEvent("esx:showNotification",source,_U('bought') .. " "..amountToBuy.."x ".. weaponLabel .. " " .. _U('ammunition').." " .. _U('for') .. " "..totalBuyPrice.." €")
+				TriggerClientEvent("pNotify:SendNotification", source, {
+					text = _U('bought') .. " "..amountToBuy.."x ".. weaponLabel .. " " .. _U('ammunition').." " .. _U('for') .. " "..totalBuyPrice.." €",type = "success",queue = "ammunition",timeout = 2500,
+					layout = "bottomCenter"
+				})
+
 			else
-				TriggerClientEvent("esx:showNotification",source,_U('not_enough_money'))
+				TriggerClientEvent("pNotify:SendNotification", source, {
+					text = _U('not_enough_money') ,type = "error",queue = "ammunition",timeout = 2500,
+					layout = "bottomCenter"
+				})
 			end
 		else
-			TriggerClientEvent("esx:showNotification",source,_U('not_specific_weapon'))
+			TriggerClientEvent("pNotify:SendNotification", source, {
+				text = _U('not_specific_weapon') ,type = "error",queue = "ammunition",timeout = 2500,
+				layout = "bottomCenter"
+			})
 		end
 	else
-		TriggerClientEvent("esx:showNotification",source,_U('purchase_limit_warning'))
+		TriggerClientEvent("pNotify:SendNotification", source, {
+			text = _U('purchase_limit_warning') ,type = "error",queue = "ammunition",timeout = 2500,
+			layout = "bottomCenter"
+		})
 	end
 end)
